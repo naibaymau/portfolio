@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f3a34">
+<title>Nguyễn Minh Anh – Portfolio</title>
+<style>
+:root{
+  --bg:#f5f3ee; --surface:#ffffff; --ink:#1c2321; --muted:#5d6864;
+  --accent:#1f3a34; --accent-2:#c8a24a; --line:#dcd8cd;
+  --font:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#111917;--surface:#1a2420;--ink:#eef0ec;--muted:#a3aea9;--accent:#e4c76e;--accent-2:#e4c76e;--line:#2c3a35}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;padding-bottom:env(safe-area-inset-bottom)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px}
+
+/* Menu */
+header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.bar{max-width:960px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;text-decoration:none;font-size:1.05rem}
+nav ul{list-style:none;display:flex;gap:4px}
+nav a{display:block;padding:10px 14px;text-decoration:none;border-radius:8px;color:var(--muted);font-weight:500}
+nav a:hover,nav a.active{color:var(--ink);background:var(--surface)}
+.burger{display:none;width:48px;height:48px;border:0;background:none;color:var(--ink);cursor:pointer;border-radius:8px}
+.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:2px;background:currentColor;margin:auto;position:relative;transition:.2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger[aria-expanded=true] span{background:transparent}
+.burger[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}
+.burger[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+
+@media (max-width:640px){
+  .burger{display:block;margin-right:-12px}
+  nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:8px 12px 12px}
+  nav.open{display:block}
+  nav ul{flex-direction:column}
+  nav a{padding:14px 12px;font-size:1.05rem}
+}
+
+/* Sections */
+main{max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h1{font-size:clamp(2rem,8vw,3.4rem);line-height:1.15;letter-spacing:-.02em;max-width:16ch}
+h2{font-size:1.6rem;margin-bottom:20px;letter-spacing:-.01em}
+p{max-width:60ch;color:var(--muted)}
+.hero{padding-top:64px}
+.hero p{margin:20px 0 28px;font-size:1.1rem}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:10px;text-decoration:none;font-weight:600;border:2px solid var(--accent);color:var(--bg);background:var(--accent)}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.btn:active{transform:scale(.98)}
+
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;list-style:none}
+.skills li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.95rem}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.thumb{height:140px;display:grid;place-items:center;font-size:2.4rem;font-weight:700;color:#fff}
+.card:nth-child(1) .thumb{background:#1f3a34}
+.card:nth-child(2) .thumb{background:#8a5a3c}
+.card:nth-child(3) .thumb{background:#3d4f7a}
+.card div.body{padding:18px}
+.card h3{font-size:1.1rem;margin-bottom:6px}
+.card p{font-size:.95rem}
+
+form{display:grid;gap:14px;max-width:480px}
+label{font-weight:600;font-size:.95rem;display:grid;gap:6px}
+input,textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+textarea{min-height:120px;resize:vertical}
+.links{margin-top:24px;display:flex;gap:20px;flex-wrap:wrap}
+footer{text-align:center;color:var(--muted);padding:28px 20px calc(28px + env(safe-area-inset-bottom));font-size:.9rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="#home">Minh Anh</a>
+    <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <nav id="menu" aria-label="Menu chính">
+      <ul>
+        <li><a href="#home" class="active">Trang chủ</a></li>
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <h1>Xin chào, tôi là Minh Anh.</h1>
+    <p>Tôi là lập trình viên web, chuyên xây dựng website nhanh, gọn và dễ dùng trên điện thoại.</p>
+    <div class="btns">
+      <a class="btn" href="#projects">Xem dự án</a>
+      <a class="btn ghost" href="#contact">Liên hệ</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Giới thiệu</h2>
+    <p>Tôi có 3 năm kinh nghiệm thiết kế và lập trình giao diện web. Tôi thích biến ý tưởng thành sản phẩm đơn giản, rõ ràng và chạy mượt trên mọi thiết bị.</p>
+    <ul class="skills">
+      <li>HTML &amp; CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Figma</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Dự án</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="thumb" aria-hidden="true">A</div>
+        <div class="body"><h3>Website quán cà phê</h3><p>Trang giới thiệu menu và đặt bàn, tải dưới 1 giây.</p></div>
+      </article>
+      <article class="card">
+        <div class="thumb" aria-hidden="true">B</div>
+        <div class="body"><h3>Ứng dụng quản lý chi tiêu</h3><p>Ghi chép thu chi hằng ngày, có biểu đồ theo tháng.</p></div>
+      </article>
+      <article class="card">
+        <div class="thumb" aria-hidden="true">C</div>
+        <div class="body"><h3>Cửa hàng trực tuyến</h3><p>Giao diện bán hàng tối ưu cho điện thoại.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Liên hệ</h2>
+    <p style="margin-bottom:20px">Bạn có dự án cần làm? Gửi tin nhắn cho tôi.</p>
+    <form action="mailto:email@example.com" method="post" enctype="text/plain">
+      <label>Tên của bạn<input type="text" name="name" autocomplete="name" required></label>
+      <label>Email<input type="email" name="email" autocomplete="email" inputmode="email" required></label>
+      <label>Nội dung<textarea name="message" required></textarea></label>
+      <button class="btn" type="submit">Gửi tin nhắn</button>
+    </form>
+    <div class="links">
+      <a href="mailto:email@example.com">email@example.com</a>
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Nguyễn Minh Anh</footer>
+
+<script>
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+function setMenu(open){menu.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);burger.setAttribute('aria-label',open?'Đóng menu':'Mở menu')}
+burger.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
+// Đánh dấu mục menu đang xem
+const links=[...menu.querySelectorAll('a')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('main section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
